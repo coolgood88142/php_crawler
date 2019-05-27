@@ -24,20 +24,24 @@
 
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $post_url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $post);     //提交方式為post
+    curl_setopt($ch, CURLOPT_COOKIEJAR, $cookie_file);
+    curl_exec($ch);
+    curl_close($ch);
+    
+
+    $data_url = "http://localhost/active_plan/activity.php";   //資料所在地址
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $data_url);
+    curl_setopt($ch, CURLOPT_HEADER, false);
+    curl_setopt($ch, CURLOPT_HEADER, 0);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER,0);
     curl_setopt($ch, CURLOPT_COOKIEFILE, $cookie_file);
-
-    //curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
-
-    //設定等待時間參數
-    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
-
-
     $data = curl_exec($ch);
-    //curl_close($ch);
+    curl_close($ch);
 
     echo $data;
-
  
     // $timeout = 10;
                  
