@@ -26,10 +26,10 @@
     $html = curl_exec($ch);
             
     //取出div標籤且id為PostContent的內容，並儲存至陣列match
-    preg_match('/<div[^>]*id="abu-today"[^>]*>(.*?) <\/div>/si',$html,$match);
+    preg_match_all('/<span[^>]*class="Va-tt"[^>]*>(.*?) <\/span>/si',$html,$match);
 
     //印出match  
-    print($match[0]); 
+   var_dump($match); 
 
     
 ?>
