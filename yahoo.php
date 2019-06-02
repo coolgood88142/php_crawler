@@ -8,11 +8,11 @@
     //設定curl物件取得URL網址
     curl_setopt($ch, CURLOPT_URL, $data_url);
 
-    curl_setopt($ch, CURLOPT_HEADER, false);
+
 
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     
-    curl_setopt($ch, CURLOPT_HTTPPROXYTUNNEL, TRUE);
+   
     
            
     //設定curl物件，支援gzip編碼格式
@@ -26,10 +26,13 @@
     $html = curl_exec($ch);
             
     //取出div標籤且id為PostContent的內容，並儲存至陣列match
-    preg_match('/<div[^>]*id="abu-today"[^>]*>(.*?) <\/div>/si',$html,$match);
+	preg_match_all('/<span class="Va-tt"(?:>|\s+([\s\S]*?)>)([\s\S]*?)<\/span\s*>/si',$html,$match);
+	//preg_match_all('/<span class="Va-tt">(.*?)[<\/span><\/a>?]/si',$html,$match);
+    //preg_match_all('/<div[^>]*class="Va-tt"[^>]*>(.*?) <\/div>/si',$html,$match);
+
 
     //印出match  
-    print($match[0]); 
+    var_dump($match);
 
     
 ?>
