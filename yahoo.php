@@ -26,6 +26,7 @@
     $html = curl_exec($ch);
             
     //取出div標籤且id為PostContent的內容，並儲存至陣列match
+<<<<<<< HEAD
 	preg_match_all('/<span class="Va-tt"(?:>|\s+([\s\S]*?)>)([\s\S]*?)<\/span\s*>/si',$html,$match);
 	//preg_match_all('/<span class="Va-tt">(.*?)[<\/span><\/a>?]/si',$html,$match);
     //preg_match_all('/<div[^>]*class="Va-tt"[^>]*>(.*?) <\/div>/si',$html,$match);
@@ -33,6 +34,12 @@
 
     //印出match  
     var_dump($match);
+=======
+    preg_match_all('/<span[^>]*class="Va-tt"[^>]*>(.*?) <\/span>/si',$html,$match);
+
+    //印出match  
+   var_dump($match); 
+>>>>>>> 1cebfb272bca52ec00b5bf54666aa7f461d382b7
 
     
 ?>
