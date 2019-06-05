@@ -1,14 +1,14 @@
 <?php 
     //提交表單網址
-    $post_url = 'https://www.cw.com.tw/member/home/MemberLogin.action?srcType=http%3A%2F%2Fwww.cw.com.tw%2FmyAccount%2Ffollow-authors';
+    $post_url = 'https://scr.cyc.org.tw//tp10.aspx?module=login_page&files=login';
 
     //建立cookie用來暫存
-    $cookie_file = dirname(__FILE__)."/authors_cookie.txt";
+    $cookie_file = dirname(__FILE__)."/Sportscenter_cookie.txt";
 
     //帳號
-    $account = 'coolgood88142@gmail.com';
-    $password = 'eric88142';
-    $post = "account=$account&password=$password";
+    $ContentPlaceHolder1_loginid = 'G122156357';
+    $loginpw = 'eric88142';
+    $post = "ContentPlaceHolder1_loginid=$ContentPlaceHolder1_loginid&loginpw=$loginpw";
 
     //建立初始化curl物件
     $ch = curl_init();
@@ -18,9 +18,10 @@
     curl_setopt($ch, CURLOPT_COOKIEJAR, $cookie_file);
     curl_exec($ch);
     curl_close($ch);
-    exit;
+    
+    
 
-    $data_url = "https://www.cw.com.tw/myAccount/follow-authors";   //資料所在地址
+    $data_url = "https://scr.cyc.org.tw/tp10.aspx?module=ind&files=ind";   //資料所在地址
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $data_url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER,0);

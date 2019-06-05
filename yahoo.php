@@ -27,12 +27,12 @@
             
     //取出div標籤且id為PostContent的內容，並儲存至陣列match
 
-	preg_match_all('/<span class="Va-tt"(?:>|\s+([\s\S]*?)>)([\s\S]*?)<\/span\s*>/si',$html,$match);
+	preg_match_all('/<a[^>]*><span class="Va-tt">([\s\S]*?)<\/span\s*><\/a>/si',$html,$match);
 	//preg_match_all('/<span class="Va-tt">(.*?)[<\/span><\/a>?]/si',$html,$match);
     //preg_match_all('/<div[^>]*class="Va-tt"[^>]*>(.*?) <\/div>/si',$html,$match);
 
     //印出match  
-   var_dump($match); 
+   var_dump($match[1]); 
 
     
 ?>
