@@ -1,38 +1,81 @@
-<?php 
- 
-    $data_url = "https://tw.yahoo.com/";
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <title>Yahoo標題</title>
+  </head>
+  <?php include("crawler.php");?>
+  <style>
+	  .vertical-center {
+	  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+	  min-height: 100vh; /* These two lines are counted as one :-)       */
+
+	  display: flex;
+	  align-items: center; 
+	}
+
+	.jumbotron{
+	  height:100%;
+	  width:100%;
+	}
+
+	#title,.table_text{
+	  font-family:'微軟正黑體';
+	}
+
+	#login,#setup{
+	  margin-top:10;
+	  margin-bottom:10;
+	}
+
+	.checkbox-inline{
+	  float: right;
+	}
+
+</style>
+  <?php 
+    $yahoo_title = $match[1];
+    $count = count($yahoo_title);
+  ?>
+  <body>
+    <div class="jumbotron vertical-center bg-info">
+    <div class="container" style="width: 500px;">
+      <h2 id="title" class="text-center text-white font-weight-bold">Yahoo 標題</h2>
+        <div id="accordion">       
+          <table class="table table_text font-weight-bold">
+            <thead>
+              <tr>
+                <th scope="col">序號</th>
+                <th scope="col">標題</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+                for($i=0;$i<$count;$i++){
+              ?>
+                <tr>
+                  <td><?= $i+1; ?></td>
+                  <td><?= $yahoo_title[$i]; ?></td>
+                </tr>
+              <?php
+                }
+              ?>
+            </tbody>
+          </table>
+        </div>
+  </div>
+</div>
 
 
-                 
-    $ch = curl_init();
-    //設定curl物件取得URL網址
-    curl_setopt($ch, CURLOPT_URL, $data_url);
-
-
-
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    
-   
-    
-           
-    //設定curl物件，支援gzip編碼格式
-    //編碼格式由header中「Accept-Encoding: 」部分的內容，支編碼格式為："identity"，"deflate"，"gzip"。如果設置為空字符串，則表示支持所有的編碼格式
-    curl_setopt($ch, CURLOPT_ENCODING, 'gzip');
-                 
-    //HTTP請求中包含一個user-agent頭的字符串。
-    curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) chrome/34.0.1847.131 Safari/537.36');
-                 
-    //執行curl物件，回傳網站html內容
-    $html = curl_exec($ch);
-            
-    //取出div標籤且id為PostContent的內容，並儲存至陣列match
-
-	preg_match_all('/<a[^>]*><span class="Va-tt">([\s\S]*?)<\/span\s*><\/a>/si',$html,$match);
-	//preg_match_all('/<span class="Va-tt">(.*?)[<\/span><\/a>?]/si',$html,$match);
-    //preg_match_all('/<div[^>]*class="Va-tt"[^>]*>(.*?) <\/div>/si',$html,$match);
-
-    //印出match  
-   var_dump($match[1]); 
-
-    
-?>
+  </body>
+</html>
