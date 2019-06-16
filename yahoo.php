@@ -41,18 +41,26 @@
 	.checkbox-inline{
 	  float: right;
 	}
+	
+	.table-border{
+		border-width:3px !important;
+	}
 
+	.table-bordered th,.table-bordered td{
+		border:3px solid #007bff;
+	}
 </style>
   <?php 
-    $yahoo_title = $match[1];
+	$yahoo_link = $title[1];
+    $yahoo_title = $title[2];
     $count = count($yahoo_title);
   ?>
   <body>
     <div class="jumbotron vertical-center bg-info">
     <div class="container" style="width: 500px;">
-      <h2 id="title" class="text-center text-white font-weight-bold">Yahoo 標題</h2>
+      <h2 id="title" class="text-center text-black font-weight-bold">Yahoo 標題</h2>
         <div id="accordion">       
-          <table class="table table_text font-weight-bold">
+          <table class="table table-bordered table_text bg-white text-black table-striped table-border font-weight-bold">
             <thead>
               <tr>
                 <th scope="col">序號</th>
@@ -65,7 +73,7 @@
               ?>
                 <tr>
                   <td><?= $i+1; ?></td>
-                  <td><?= $yahoo_title[$i]; ?></td>
+				  <td><?= $yahoo_title[$i]; ?></td>
                 </tr>
               <?php
                 }
