@@ -17,10 +17,7 @@
     $title = "";
 	$link = "";
 	
-	//取出div標籤且id為PostContent的內容，並儲存至陣列match
-	preg_match_all('/<a href="([\s\S]*?)" [^>]*><span class="Va-tt">([\s\S]*?)<\/span\s*><\/a>/si',$html,$title);
-	//preg_match_all('/<a href="(https:\/\/tw.news.yahoo.com\/[\s\S]*?\.html[\s\S]*?)" class="[\s\S]*?" [^>]*><span class="Va-tt">[\s\S]*?<\/span\s*><\/a>\s+<p class="[\s\S]*?"><span class="Va-tt">[\s\S]*?<\/span\s*><\/p>\s+<\/span\s*>/si',$html,$link);
-	
-	var_dump($title[0]);
+	//取出a標籤底下的span標籤的文字與p標籤底下的span標籤的文字
+	preg_match_all('/(<a [^>]*><span class="Va-tt">[\s\S]*?<\/span\s*><\/a>)\s+<p class="[\s\S]*?"><span class="Va-tt">([\s\S]*?)<\/span\s*><\/p>\s+<\/span\s*>/si',$html,$title);
 	
 ?>

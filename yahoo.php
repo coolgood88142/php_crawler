@@ -49,41 +49,49 @@
 	.table-bordered th,.table-bordered td{
 		border:3px solid #007bff;
 	}
+	
+	.no{
+		width: 70px;
+	}
+	
+	.title-width{
+		width: 315px;
+	}
 </style>
   <?php 
 	$yahoo_link = $title[1];
-    $yahoo_title = $title[2];
-    $count = count($yahoo_title);
+	$yahoo_subtitle = $title[2];
+    $count = count($yahoo_link);
   ?>
   <body>
     <div class="jumbotron vertical-center bg-info">
-    <div class="container" style="width: 500px;">
-      <h2 id="title" class="text-center text-black font-weight-bold">Yahoo 標題</h2>
-        <div id="accordion">       
-          <table class="table table-bordered table_text bg-white text-black table-striped table-border font-weight-bold">
-            <thead>
-              <tr>
-                <th scope="col">序號</th>
-                <th scope="col">標題</th>
-              </tr>
-            </thead>
-            <tbody>
-              <?php
-                for($i=0;$i<$count;$i++){
-              ?>
-                <tr>
-                  <td><?= $i+1; ?></td>
-				  <td><?= $yahoo_title[$i]; ?></td>
-                </tr>
-              <?php
-                }
-              ?>
-            </tbody>
-          </table>
-        </div>
-  </div>
-</div>
-
-
+	<div class="container" style="width: 700px;">
+		<h2 id="title" class="text-center text-black font-weight-bold">Yahoo 標題</h2>
+		<div id="accordion">       
+			<table class="table table-bordered table_text bg-white text-black table-striped table-border font-weight-bold table-responsive">
+				<thead>
+				  <tr>
+					<th scope="col" class="no">序號</th>
+					<th scope="col" class="title-width">主標題</th>
+					<th scope="col" class="title-width">副標題</th>
+				  </tr>
+				</thead>
+				<tbody>
+				  <?php
+					for($i=0;$i<$count;$i++){
+				  ?>
+					<tr>
+					  <th><?= $i+1; ?></th>
+					  <td><?= $yahoo_link[$i]; ?></td>
+					  <td><?= $yahoo_subtitle[$i]; ?></td>
+					</tr>
+				  <?php
+					}
+				  ?>
+				</tbody>
+			 </table>
+		</div>
+	  </div>
+	</div>
   </body>
 </html>
