@@ -5,15 +5,19 @@ use Goutte\Client;
 use GuzzleHttp\Client as GuzzleClient;
 
 $client = new Client();
-$guzzleClient = new GuzzleClient(array(
-    'timeout' => 60,
-));
-$client->setClient($guzzleClient);
+
 $crawler = $client->request('GET', 'https://tw.yahoo.com/');
+$i=1;$j=1;
 
-
-//preg_match_all('/<a[^>]*><span class="Va-tt">([\s\S]*?)<\/span\s*><\/a>/si',$crawler,$match);
+echo '主標題'.'<br>';
 $crawler->filter('a > span[class="Va-tt"]')->each(function ($node) {
+    print $node->text().'<br>';
+});
+
+echo '<br>';
+
+echo '副標題'.'<br>';
+$crawler->filter('p > span[class="Va-tt"]')->each(function ($node) {
     print $node->text().'<br>';
 });
 
