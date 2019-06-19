@@ -1,24 +1,97 @@
-<?php
-require	'vendor/autoload.php';
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-use Goutte\Client;
-use GuzzleHttp\Client as GuzzleClient;
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <title>Yahoo標題</title>
+  </head>
+  <?php include("crawler_composer.php");?>
+  <style>
+	  .vertical-center {
+	  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+	  min-height: 100vh; /* These two lines are counted as one :-)       */
 
-$client = new Client();
+	  display: flex;
+	  align-items: center; 
+	}
 
-$crawler = $client->request('GET', 'https://tw.yahoo.com/');
-$i=1;$j=1;
+	.jumbotron{
+	  height:100%;
+	  width:100%;
+	}
 
-echo '主標題'.'<br>';
-$crawler->filter('a > span[class="Va-tt"]')->each(function ($node) {
-    print $node->text().'<br>';
-});
+	#title,.table_text{
+	  font-family:'微軟正黑體';
+	}
 
-echo '<br>';
+	#login,#setup{
+	  margin-top:10;
+	  margin-bottom:10;
+	}
 
-echo '副標題'.'<br>';
-$crawler->filter('p > span[class="Va-tt"]')->each(function ($node) {
-    print $node->text().'<br>';
-});
+	.checkbox-inline{
+	  float: right;
+	}
+	
+	.table-border{
+		border-width:3px !important;
+	}
 
-?>
+	.table-bordered th,.table-bordered td{
+		border:3px solid #007bff;
+	}
+	
+	.no{
+		width: 70px;
+	}
+	
+	.title-width{
+		width: 315px;
+	}
+</style>
+  <?php 
+	$yahoo_link = $title[0];
+	$yahoo_subtitle = $title[1];
+    $count = count($yahoo_link);
+  ?>
+  <body>
+    <div class="jumbotron vertical-center bg-info">
+	<div class="container" style="width: 700px;">
+		<h2 id="title" class="text-center text-black font-weight-bold">Yahoo 標題</h2>
+		<div id="accordion">       
+			<table class="table table-bordered table_text bg-white text-black table-striped table-border font-weight-bold table-responsive">
+				<thead>
+				  <tr>
+					<th scope="col" class="no">序號</th>
+					<th scope="col" class="title-width">主標題</th>
+					<th scope="col" class="title-width">副標題</th>
+				  </tr>
+				</thead>
+				<tbody>
+				  <?php
+					for($i=0;$i<$count;$i++){
+				  ?>
+					<tr>
+					  <th><?= $i+1; ?></th>
+					  <td><a><?= $yahoo_link[$i]; ?></a></td>
+					  <td><?= $yahoo_subtitle[$i]; ?></td>
+					</tr>
+				  <?php
+					}
+				  ?>
+				</tbody>
+			 </table>
+		</div>
+	  </div>
+	</div>
+  </body>
+</html>
