@@ -67,7 +67,37 @@
     <div class="jumbotron vertical-center bg-info">
 	<div class="container" style="width: 700px;">
 		<h2 id="title" class="text-center text-black font-weight-bold">Yahoo 標題</h2>
-		<div id="accordion">       
+		<div id="accordion">   
+      <ul class="nav nav-tabs">
+        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab-1" role="tab">焦點</a></li>
+        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab-2" role="tab">運動</a></li>
+        <li class="nav-item"><a class="nav-link"  data-toggle="tab" href="#tab-3" role="tab">娛樂</a></li>
+		<li class="nav-item"><a class="nav-link"  data-toggle="tab" href="#tab-4" role="tab">生活</a></li>
+		<li class="nav-item"><a class="nav-link"  data-toggle="tab" href="#tab-5" role="tab">FUN</a></li>
+		<li class="nav-item"><a class="nav-link"  data-toggle="tab" href="#tab-6" role="tab">影音</a></li>
+      </ul>
+      <div id="collapse_title" class="card collapse">
+        <div class="card-block">
+          <div class="tab-content">
+            <div class="tab-pane active" id="tab-1">
+              <h4 class="card-title">Tab 1</h4>
+              <p class="card-text">Libero at quibusdam autem magnam necessitatibus, ullam nisi quo, architecto molestias reprehenderit neque porro velit deleniti ipsa mollitia pariatur! Expedita, eius repudiandae.</p>
+            </div>
+            <div class="tab-pane" id="tab-2">
+              <h4 class="card-title">Tab 2</h4>
+              <p class="card-text">Magni autem a perferendis tempore perspiciatis aspernatur sapiente fuga deserunt dignissimos consequuntur maiores aliquid hic, in pariatur, officiis repellat voluptatum provident blanditiis.</p>
+            </div>
+            <div class="tab-pane" id="tab-3">
+              <h4 class="card-title">Tab 3</h4>
+              <p class="card-text">Odio, facilis, vel eum nam architecto maxime consequuntur consectetur et qui eveniet alias minus provident suscipit delectus odit cupiditate similique fuga vero!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+			<br/>
+		
 			<table class="table table-bordered table_text bg-white text-black table-striped table-border font-weight-bold table-responsive">
 				<thead>
 				  <tr>
@@ -94,4 +124,14 @@
 	  </div>
 	</div>
   </body>
+  <script>
+	$(document).ready(function() {
+
+  $('.nav-link').on('click', function() {
+    if (!$('#collapse_title').hasClass('show')) {
+      $('#collapse_title').collapse('toggle')
+    }
+  })
+});
+  </script>
 </html>
