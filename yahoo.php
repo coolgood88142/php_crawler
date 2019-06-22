@@ -29,7 +29,7 @@
 	  width:100%;
 	}
 
-	#title,.table_text{
+	#title,.table_text,#collapse_title{
 	  font-family:'微軟正黑體';
 	}
 
@@ -62,76 +62,64 @@
 	$yahoo_link = $title[1];
 	$yahoo_subtitle = $title[2];
     $count = count($yahoo_link);
+
+    $focus = array();
+
+    
   ?>
   <body>
     <div class="jumbotron vertical-center bg-info">
-	<div class="container" style="width: 700px;">
-		<h2 id="title" class="text-center text-black font-weight-bold">Yahoo 標題</h2>
-		<div id="accordion">   
-      <ul class="nav nav-tabs">
-        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab-1" role="tab">焦點</a></li>
-        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab-2" role="tab">運動</a></li>
-        <li class="nav-item"><a class="nav-link"  data-toggle="tab" href="#tab-3" role="tab">娛樂</a></li>
-		<li class="nav-item"><a class="nav-link"  data-toggle="tab" href="#tab-4" role="tab">生活</a></li>
-		<li class="nav-item"><a class="nav-link"  data-toggle="tab" href="#tab-5" role="tab">FUN</a></li>
-		<li class="nav-item"><a class="nav-link"  data-toggle="tab" href="#tab-6" role="tab">影音</a></li>
-      </ul>
-      <div id="collapse_title" class="card collapse">
-        <div class="card-block">
-          <div class="tab-content">
-            <div class="tab-pane active" id="tab-1">
-              <h4 class="card-title">Tab 1</h4>
-              <p class="card-text">Libero at quibusdam autem magnam necessitatibus, ullam nisi quo, architecto molestias reprehenderit neque porro velit deleniti ipsa mollitia pariatur! Expedita, eius repudiandae.</p>
-            </div>
-            <div class="tab-pane" id="tab-2">
-              <h4 class="card-title">Tab 2</h4>
-              <p class="card-text">Magni autem a perferendis tempore perspiciatis aspernatur sapiente fuga deserunt dignissimos consequuntur maiores aliquid hic, in pariatur, officiis repellat voluptatum provident blanditiis.</p>
-            </div>
-            <div class="tab-pane" id="tab-3">
-              <h4 class="card-title">Tab 3</h4>
-              <p class="card-text">Odio, facilis, vel eum nam architecto maxime consequuntur consectetur et qui eveniet alias minus provident suscipit delectus odit cupiditate similique fuga vero!</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-			<br/>
-		
-			<table class="table table-bordered table_text bg-white text-black table-striped table-border font-weight-bold table-responsive">
-				<thead>
-				  <tr>
-					<th scope="col" class="no">序號</th>
-					<th scope="col" class="title-width">主標題</th>
-					<th scope="col" class="title-width">副標題</th>
-				  </tr>
-				</thead>
-				<tbody>
-				  <?php
-					for($i=0;$i<$count;$i++){
-				  ?>
-					<tr>
-					  <th><?= $i+1; ?></th>
-					  <td><?= $yahoo_link[$i]; ?></td>
-					  <td><?= $yahoo_subtitle[$i]; ?></td>
-					</tr>
-				  <?php
-					}
-				  ?>
-				</tbody>
-			 </table>
+		<div class="container" style="width: 700px;">
+			<h2 id="title" class="text-center text-black font-weight-bold">Yahoo 標題</h2>
+			<div id="accordion">   
+			    <ul class="nav nav-tabs">
+			        <li class="nav-item"><a class="nav-link active show" data-toggle="tab" href="#tab-0" role="tab">焦點</a></li>
+			        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab-1" role="tab">運動</a></li>
+			        <li class="nav-item"><a class="nav-link"  data-toggle="tab" href="#tab-2" role="tab">娛樂</a></li>
+					<li class="nav-item"><a class="nav-link"  data-toggle="tab" href="#tab-3" role="tab">生活</a></li>
+					<li class="nav-item"><a class="nav-link"  data-toggle="tab" href="#tab-4" role="tab">FUN</a></li>
+					<li class="nav-item"><a class="nav-link"  data-toggle="tab" href="#tab-5" role="tab">影音</a></li>
+			    </ul>
+	      		<div id="collapse_title" class="card collapse show">
+			        <div class="card-block">
+			          	<div class="tab-content">
+			          	<?php
+			          		for($i=0;$i<6;$i++){
+			          			$tab = "tab-pane";
+			          			if($i==0){
+			          				$tab = $tab . " active show";
+			          			}
+			          	?>
+			            		<div class="<?= $tab?>" id="tab-<?= $i?>">
+			            <?php  
+			            		$a = $i * 4;
+			            		$b = $a + 4;
+			            		for($j=$a;$j<$b;$j++){
+			            ?>
+							  		<h4><?= $yahoo_link[$j]; ?></h4>
+							  		<p class="card-text"><?= $yahoo_subtitle[$j]; ?></p>
+						<?php
+								}
+						?>
+								</div>
+						<?php		
+							}
+						?>
+	            		</div>			
+	          		</div>
+	        	</div>
+      		</div>
 		</div>
 	  </div>
 	</div>
   </body>
   <script>
 	$(document).ready(function() {
-
-  $('.nav-link').on('click', function() {
-    if (!$('#collapse_title').hasClass('show')) {
-      $('#collapse_title').collapse('toggle')
-    }
-  })
+	  	$('.nav-link').on('click', function() {
+	    if (!$('#collapse_title').hasClass('show')) {
+	      $('#collapse_title').collapse('toggle')
+	 	}
+  	})
 });
   </script>
 </html>
