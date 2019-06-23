@@ -57,47 +57,76 @@
 	.title-width{
 		width: 315px;
 	}
+	
+	.sky{
+		background-color:#CAEBF2;
+	}
+	
+	.tx-carbon{
+		color:#A9A9A9;
+	}
+	
+	a,.tx-watermelon{
+		color:#FF3B3F;
+	}
+
+	.neutral{
+		background-color:#EFEFEF;
+	}
+	
+	.nav-tabs {
+		border-bottom: 1px solid #A9A9A9;
+	}
+	
+	a.nav-link.active.show{
+		background-color:#CAEBF2;
+	}
 </style>
   <?php 
 	$yahoo_link = $title[1];
 	$yahoo_subtitle = $title[2];
     $count = count($yahoo_link);
-
-    $focus = array();
-
+    
+	$category_title = $category[1];
+	$category_count = count($category_title);
     
   ?>
   <body>
-    <div class="jumbotron vertical-center bg-info">
+    <div class="jumbotron vertical-center bg-white">
 		<div class="container" style="width: 700px;">
-			<h2 id="title" class="text-center text-black font-weight-bold">Yahoo 標題</h2>
+			<h2 id="title" class="text-center font-weight-bold tx-watermelon">Yahoo 標題</h2>
 			<div id="accordion">   
 			    <ul class="nav nav-tabs">
-			        <li class="nav-item"><a class="nav-link active show" data-toggle="tab" href="#tab-0" role="tab">焦點</a></li>
-			        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab-1" role="tab">運動</a></li>
-			        <li class="nav-item"><a class="nav-link"  data-toggle="tab" href="#tab-2" role="tab">娛樂</a></li>
-					<li class="nav-item"><a class="nav-link"  data-toggle="tab" href="#tab-3" role="tab">生活</a></li>
-					<li class="nav-item"><a class="nav-link"  data-toggle="tab" href="#tab-4" role="tab">FUN</a></li>
-					<li class="nav-item"><a class="nav-link"  data-toggle="tab" href="#tab-5" role="tab">影音</a></li>
+					<?php
+						for($k=0;$k<$category_count;$k++){
+							$nav_link = "nav-link";
+							if($k==0){
+								$nav_link = $nav_link . " show active";
+							}
+					?>
+							<li class="nav-item"><a class="<?= $nav_link?> text-dark" data-toggle="tab" href="#tab-<?= $k?>" role="tab"><?= $category_title[$k]?></a></li>
+					<?php
+						}
+					?>
 			    </ul>
 	      		<div id="collapse_title" class="card collapse show">
 			        <div class="card-block">
 			          	<div class="tab-content">
 			          	<?php
-			          		for($i=0;$i<6;$i++){
-			          			$tab = "tab-pane";
+			          		for($i=0;$i<$category_count;$i++){
+			          			$tab_pane = "tab-pane";
 			          			if($i==0){
-			          				$tab = $tab . " active show";
+			          				$tab_pane = $tab_pane . " active show";
 			          			}
 			          	?>
-			            		<div class="<?= $tab?>" id="tab-<?= $i?>">
+			            		<div class="<?= $tab_pane?>" id="tab-<?= $i?>">
 			            <?php  
 			            		$a = $i * 4;
 			            		$b = $a + 4;
 			            		for($j=$a;$j<$b;$j++){
 			            ?>
 							  		<h4><?= $yahoo_link[$j]; ?></h4>
-							  		<p class="card-text"><?= $yahoo_subtitle[$j]; ?></p>
+							  		<p class="card-text tx-carbon"><?= $yahoo_subtitle[$j]; ?></p>
 						<?php
 								}
 						?>
