@@ -85,7 +85,6 @@
   <?php 
 	$yahoo_link = $title[1];
 	$yahoo_subtitle = $title[2];
-    $count = count($yahoo_link);
     
 	$category_title = $category[1];
 	$category_count = count($category_title);
