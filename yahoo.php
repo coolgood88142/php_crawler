@@ -81,6 +81,20 @@
 	a.nav-link.active.show{
 		background-color:#CAEBF2;
 	}
+
+	a.nav-link{
+		background-color:#ffffff;
+	}
+
+	#accordion{
+		width:579px;
+	}
+
+	.nav-item{
+		width:16%;
+		border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+	}
 </style>
   <?php 
 	$yahoo_link = $title[1];
@@ -91,19 +105,15 @@
     
   ?>
   <body>
-    <div class="jumbotron vertical-center bg-white">
+    <div class="jumbotron vertical-center neutral">
 		<div class="container" style="width: 700px;">
 			<h2 id="title" class="text-center font-weight-bold tx-watermelon">Yahoo 標題</h2>
 			<div id="accordion">   
 			    <ul class="nav nav-tabs">
 					<?php
 						for($k=0;$k<$category_count;$k++){
-							$nav_link = "nav-link";
-							if($k==0){
-								$nav_link = $nav_link . " show active";
-							}
 					?>
-							<li class="nav-item"><a class="<?= $nav_link?> text-dark" data-toggle="tab" href="#tab-<?= $k?>" role="tab"><?= $category_title[$k]?></a></li>
+							<li class="nav-item"><a id="nav-<?= $k?>" class="nav-link text-dark" data-toggle="tab" href="#tab-<?= $k?>" role="tab"><?= $category_title[$k]?></a></li>
 					<?php
 						}
 					?>
@@ -113,12 +123,8 @@
 			          	<div class="tab-content">
 			          	<?php
 			          		for($i=0;$i<$category_count;$i++){
-			          			$tab_pane = "tab-pane";
-			          			if($i==0){
-			          				$tab_pane = $tab_pane . " active show";
-			          			}
 			          	?>
-			            		<div class="<?= $tab_pane?>" id="tab-<?= $i?>">
+			            		<div class="tab-pane" id="tab-<?= $i?>">
 			            <?php  
 			            		$a = $i * 4;
 			            		$b = $a + 4;
@@ -144,10 +150,14 @@
   <script>
 	$(document).ready(function() {
 	  	$('.nav-link').on('click', function() {
-	    if (!$('#collapse_title').hasClass('show')) {
-	      $('#collapse_title').collapse('toggle')
-	 	}
-  	})
-});
+			if (!$('#collapse_title').hasClass('show')) {
+				$('#collapse_title').collapse('toggle')
+			}
+		
+		});
+	
+		$("#nav-0").addClass("active show");
+		$("#tab-0").addClass("active");
+	});
   </script>
 </html>

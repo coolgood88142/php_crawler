@@ -1,5 +1,8 @@
 {
     "require": {
-        "fabpot/goutte": "^3.2"
+        "fabpot/goutte": "^3.2",
+        "mohuishou/image-ocr": "^0.1.2",
+        "thiagoalessio/tesseract_ocr": "^2.7",
+		"fizzday/ocrphp": "dev-master"
     }
 }

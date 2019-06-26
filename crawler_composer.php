@@ -41,7 +41,6 @@ try{
 		$link = $crawler->selectLink($hrefText)->link();
 		return $url = $link->getUri();
 	});
-	
 }catch(Exception $e){
 	echo "讀取時間過長";
 }
