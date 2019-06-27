@@ -75,7 +75,13 @@
 	}
 	
 	.nav-tabs {
-		border-bottom: 1px solid #A9A9A9;
+		width: 494px;
+		border-color: #e2e2e6;
+		background-color: #f4f4f4;
+		border-bottom-width: 1px;
+		zoom: 1;
+		border-width: 0;
+		border-style: solid;
 	}
 	
 	a.nav-link.active.show{
@@ -87,13 +93,44 @@
 	}
 
 	#accordion{
-		width:579px;
+		width:496px;
+		border-width: 1px;
+		border-style: solid;
+		border-color: #e2e2e6;
 	}
 
 	.nav-item{
 		width:16%;
 		border-left: 1px solid transparent;
-    border-right: 1px solid transparent;
+		border-right: 1px solid transparent;
+		text-align: center;
+		padding-bottom: 2px;
+	}
+	
+	.today-tab{
+		font-weight: 700;
+		border-top-width: 3px;
+		border-top-style: solid;
+		border-color: transparent
+	}
+	
+	.collapse_title{
+		height: 224px;
+		ackground-color: #fff;
+	}
+	
+	.active{
+		border-right-color: #d6d6d6;
+		border-bottom: 1px solid #fff;
+		background-color: #fff;
+		margin-bottom: -1px;
+		color: #7300ff!important;
+		border-bottom: 0;
+		border-top-color: #7300ff;
+	}
+	
+	.card{
+		border: 0px;
 	}
 </style>
   <?php 
@@ -113,7 +150,7 @@
 					<?php
 						for($k=0;$k<$category_count;$k++){
 					?>
-							<li class="nav-item"><a id="nav-<?= $k?>" class="nav-link text-dark" data-toggle="tab" href="#tab-<?= $k?>" role="tab"><?= $category_title[$k]?></a></li>
+							<li class="nav-item"><span id="nav-<?= $k?>" class="today-tab nav-link text-dark" data-toggle="tab" href="#tab-<?= $k?>" role="tab"><?= $category_title[$k]?></span></li>
 					<?php
 						}
 					?>
