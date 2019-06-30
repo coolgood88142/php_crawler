@@ -124,13 +124,21 @@
 		border-bottom: 1px solid #fff;
 		background-color: #fff;
 		margin-bottom: -1px;
-		color: #7300ff!important;
+		color: #CAEBF2!important;
 		border-bottom: 0;
-		border-top-color: #7300ff;
+		border-top-color: #CAEBF2;
+		font-weight: 700;
+		border-top-style: solid;
+		border-color: transparent
 	}
 	
 	.card{
 		border: 0px;
+	}
+	
+	.nav-tabs .nav-link.active{
+		border-top-width: 3px;
+		border-top-color: #CAEBF2;
 	}
 </style>
   <?php 
@@ -150,7 +158,7 @@
 					<?php
 						for($k=0;$k<$category_count;$k++){
 					?>
-							<li class="nav-item"><span id="nav-<?= $k?>" class="today-tab nav-link text-dark" data-toggle="tab" href="#tab-<?= $k?>" role="tab"><?= $category_title[$k]?></span></li>
+							<li class="nav-item"><span id="nav-<?= $k?>" class="nav-link text-dark today-tab" data-toggle="tab" href="#tab-<?= $k?>" role="tab"><?= $category_title[$k]?></span></li>
 					<?php
 						}
 					?>
@@ -193,8 +201,8 @@
 		
 		});
 	
-		$("#nav-0").addClass("active show");
-		$("#tab-0").addClass("active");
+		$("#nav-0").addClass("active show Selected");
+		$("#tab-0").addClass("active Selected");
 	});
   </script>
 </html>

@@ -32,7 +32,5 @@
 	$img = "";
 	//搜尋html內容裡的a標籤的標題
 	preg_match_all('/<div class="Bgc-w Zoom-1 Ov-h Pos-r W-100 H-100 Z-1000" [\s\S]*?>\s+<div class="W-100 H-100 Ov-h "[\s\S]*?>\s+([\s\S]*?)<\/div>\s+([\s\S]*?<\/div>\s+<\/a>)/si',$html,$img);
-	
-	var_dump($img);
-	
+		
 ?>
