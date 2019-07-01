@@ -16,7 +16,7 @@
   </head>
   <?php include("crawler.php");?>
   <style>
-	  .vertical-center {
+	.vertical-center {
 	  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
 	  min-height: 100vh; /* These two lines are counted as one :-)       */
 
@@ -32,31 +32,6 @@
 	#title,.table_text,#collapse_title{
 	  font-family:'微軟正黑體';
 	}
-
-	#login,#setup{
-	  margin-top:10;
-	  margin-bottom:10;
-	}
-
-	.checkbox-inline{
-	  float: right;
-	}
-	
-	.table-border{
-		border-width:3px !important;
-	}
-
-	.table-bordered th,.table-bordered td{
-		border:3px solid #007bff;
-	}
-	
-	.no{
-		width: 70px;
-	}
-	
-	.title-width{
-		width: 315px;
-	}
 	
 	.sky{
 		background-color:#CAEBF2;
@@ -69,13 +44,8 @@
 	a,.tx-watermelon{
 		color:#FF3B3F;
 	}
-
-	.neutral{
-		background-color:#EFEFEF;
-	}
 	
 	.nav-tabs {
-		width: 494px;
 		border-color: #e2e2e6;
 		background-color: #f4f4f4;
 		border-bottom-width: 1px;
@@ -93,7 +63,6 @@
 	}
 
 	#accordion{
-		width:496px;
 		border-width: 1px;
 		border-style: solid;
 		border-color: #e2e2e6;
@@ -114,11 +83,6 @@
 		border-color: transparent
 	}
 	
-	.collapse_title{
-		height: 224px;
-		ackground-color: #fff;
-	}
-	
 	.active{
 		border-right-color: #d6d6d6;
 		border-bottom: 1px solid #fff;
@@ -132,6 +96,13 @@
 		border-color: transparent
 	}
 	
+	
+	.collapse_title{
+		height: 224px;
+		ackground-color: #fff;
+	}
+	
+	
 	.card{
 		border: 0px;
 	}
@@ -140,18 +111,53 @@
 		border-top-width: 3px;
 		border-top-color: #CAEBF2;
 	}
+	
+	.tab-pane.active{
+		z-index: 2;
+		margin-top: 0;
+		margin: 0;
+	}
+	
+	.title-img{
+		z-index: 1;
+	}
+	
+	.tab-data{
+		display: block;
+	}
+	
+	.img-link,.img-alt{
+		position:relative;
+	}
+	
+	.img-alt{
+		top: -45px;
+	}
+	
+	.img-text{
+		font-size: 24px;
+		color: #fff!important;
+		padding-right: 14px;
+		padding-left: 14px;
+		text-decoration: none;
+		letter-spacing: normal;
+	}
 </style>
   <?php 
 	$yahoo_link = $title[1];
 	$yahoo_subtitle = $title[2];
+	
+	$yahoo_img = $img[0];
+	$yahoo_alt = $img[1];
+	$yahoo_img_link = $img_link[1];
     
 	$category_title = $category[1];
 	$category_count = count($category_title);
     
   ?>
   <body>
-    <div class="jumbotron vertical-center neutral">
-		<div class="container" style="width: 700px;">
+    <div class="jumbotron vertical-center bh-white">
+		<div class="container" style="width: 582px;">
 			<h2 id="title" class="text-center font-weight-bold tx-watermelon">Yahoo 標題</h2>
 			<div id="accordion">   
 			    <ul class="nav nav-tabs">
@@ -170,6 +176,18 @@
 			          		for($i=0;$i<$category_count;$i++){
 			          	?>
 			            		<div class="tab-pane" id="tab-<?= $i?>">
+									<ul>
+										<li class="title-img tab-data" >
+											
+												<a href="<?= $yahoo_img_link[$i];?>" class="img-link">
+													<?= $yahoo_img[$i];?>
+												</a>
+												<a href="<?= $yahoo_img_link[$i];?>" class="img-alt">
+													<p class="img-text"><?= $yahoo_alt[$i];?></p>
+												</a>
+											
+										</li>
+										<li class="tab-data">
 			            <?php  
 			            		$a = $i * 4;
 			            		$b = $a + 4;
@@ -179,7 +197,8 @@
 							  		<p class="card-text tx-carbon"><?= $yahoo_subtitle[$j]; ?></p>
 						<?php
 								}
-						?>
+						?>				</li>
+									</ul>
 								</div>
 						<?php		
 							}
@@ -202,7 +221,7 @@
 		});
 	
 		$("#nav-0").addClass("active show Selected");
-		$("#tab-0").addClass("active Selected");
+		$("#tab-0").addClass("active");
 	});
   </script>
 </html>

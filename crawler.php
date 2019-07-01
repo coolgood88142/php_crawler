@@ -31,6 +31,9 @@
 	
 	$img = "";
 	//搜尋html內容裡的a標籤的標題
-	preg_match_all('/<div class="Bgc-w Zoom-1 Ov-h Pos-r W-100 H-100 Z-1000" [\s\S]*?>\s+<div class="W-100 H-100 Ov-h "[\s\S]*?>\s+([\s\S]*?)<\/div>\s+([\s\S]*?<\/div>\s+<\/a>)/si',$html,$img);
-		
+	preg_match_all('/<img class="MainStoryImage Pos-r Bd-0 Mend-12[\s\S]*? alt="([\s\S]*?)"[\s\S]*?>/si',$html,$img);
+	
+	$img_link ="";
+	preg_match_all('/<div class="Bgc-w D-ib Zoom-1 Pos-a Start-0 T-0 Ov-h[\s\S]*?>\s+<div>\s+<a href="([\s\S]*?)"/si',$html,$img_link);
+	
 ?>
