@@ -28,6 +28,11 @@
 	  height:100%;
 	  width:100%;
 	}
+	
+	.container{
+		padding-right: 0px;
+		padding-left: 0px;
+	}
 
 	#title,.table_text,#collapse_title{
 	  font-family:'微軟正黑體';
@@ -38,11 +43,11 @@
 	}
 	
 	.tx-carbon{
-		color:#A9A9A9;
+		color:#5f5f5f;
 	}
 	
 	a,.tx-watermelon{
-		color:#FF3B3F;
+		color:#324fe1;
 	}
 	
 	.nav-tabs {
@@ -120,10 +125,20 @@
 	
 	.title-img{
 		z-index: 1;
+		position: absolute;
+		width: 350px;
+		height: 210px;
+		top: 14px;
+		left: 12px;
+		border: 1px solid rgb(226, 226, 228);
 	}
 	
 	.tab-data{
-		display: block;
+		position: relative;
+		letter-spacing: normal;
+		line-height: 1;
+		display: inline-block;
+		float: right;
 	}
 	
 	.img-link,.img-alt{
@@ -142,6 +157,41 @@
 		text-decoration: none;
 		letter-spacing: normal;
 	}
+	
+	.tab-text{
+		width: 284px;
+		float: right;
+		position: relative;
+		padding-top: 15px;
+		display: block;
+		margin-left: 20px;
+		margin-right: 8px;
+		margin-bottom: 6px;
+	}
+	
+	.Va-tt{
+		vertical-align: text-top;
+		text-rendering: auto;
+	}
+	
+	.card-text{
+		margin-top: 0;
+		margin-left: 32px;
+		margin-right: 8px;
+		line-height: 1;
+		font: 13px/1.25 'Helvetica Neue',Helvetica,Arial,sans-serif;
+	}
+	
+	.story-title{
+		margin-top: 0;
+		margin-left: 32px;
+		margin-right: 8px;
+	}
+	
+	.ImageLoader-Delayed{
+		width: 100%;
+		display: block;
+	}
 </style>
   <?php 
 	$yahoo_link = $title[1];
@@ -157,7 +207,7 @@
   ?>
   <body>
     <div class="jumbotron vertical-center bh-white">
-		<div class="container" style="width: 582px;">
+		<div class="container" style="width: 635px;">
 			<h2 id="title" class="text-center font-weight-bold tx-watermelon">Yahoo 標題</h2>
 			<div id="accordion">   
 			    <ul class="nav nav-tabs">
@@ -177,7 +227,7 @@
 			          	?>
 			            		<div class="tab-pane" id="tab-<?= $i?>">
 									<ul>
-										<li class="title-img tab-data" >
+										<li class="title-img" >
 											
 												<a href="<?= $yahoo_img_link[$i];?>" class="img-link">
 													<?= $yahoo_img[$i];?>
@@ -187,17 +237,21 @@
 												</a>
 											
 										</li>
-										<li class="tab-data">
+										
 			            <?php  
 			            		$a = $i * 4;
 			            		$b = $a + 4;
 			            		for($j=$a;$j<$b;$j++){
 			            ?>
-							  		<h4><?= $yahoo_link[$j]; ?></h4>
-							  		<p class="card-text tx-carbon"><?= $yahoo_subtitle[$j]; ?></p>
+										<li class="tab-data">
+											<div class="tab-text">
+												<?= $yahoo_link[$j]; ?>
+												<p class="card-text tx-carbon"><?= $yahoo_subtitle[$j]; ?></p>
+											</div>
+										</li>
 						<?php
 								}
-						?>				</li>
+						?>				
 									</ul>
 								</div>
 						<?php		
