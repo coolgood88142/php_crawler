@@ -12,7 +12,8 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-    <title>Yahoo標題</title>
+    <script src="//cdn.rawgit.com/tonystar/bootstrap-hover-tabs/v3.1.1/bootstrap-hover-tabs.js"></script>
+	<title>Yahoo標題</title>
   </head>
   <?php include("crawler.php");?>
   <style>
@@ -39,7 +40,7 @@
 	}
 	
 	.sky{
-		background-color:#CAEBF2;
+		background-color:#286DA8;
 	}
 	
 	.tx-carbon{
@@ -60,7 +61,7 @@
 	}
 	
 	a.nav-link.active.show{
-		background-color:#CAEBF2;
+		background-color:#286DA8;
 	}
 
 	a.nav-link{
@@ -93,9 +94,9 @@
 		border-bottom: 1px solid #fff;
 		background-color: #fff;
 		margin-bottom: -1px;
-		color: #CAEBF2!important;
+		color: #286DA8!important;
 		border-bottom: 0;
-		border-top-color: #CAEBF2;
+		border-top-color: #286DA8;
 		font-weight: 700;
 		border-top-style: solid;
 		border-color: transparent
@@ -114,13 +115,17 @@
 	
 	.nav-tabs .nav-link.active{
 		border-top-width: 3px;
-		border-top-color: #CAEBF2;
+		border-top-color: #286DA8;
 	}
 	
 	.tab-pane.active{
 		z-index: 2;
 		margin-top: 0;
 		margin: 0;
+	}
+
+	.title-cor{
+		color:#286DA8;
 	}
 	
 	.title-img{
@@ -131,6 +136,7 @@
 		top: 14px;
 		left: 12px;
 		border: 1px solid rgb(226, 226, 228);
+		list-style:none;
 	}
 	
 	.tab-data{
@@ -192,6 +198,10 @@
 		width: 100%;
 		display: block;
 	}
+	
+	.MainStoryImage{
+		background-size: cover;
+	}
 </style>
   <?php 
 	$yahoo_link = $title[1];
@@ -206,15 +216,15 @@
     
   ?>
   <body>
-    <div class="jumbotron vertical-center bh-white">
+    <div class="jumbotron vertical-center bg-white">
 		<div class="container" style="width: 635px;">
-			<h2 id="title" class="text-center font-weight-bold tx-watermelon">Yahoo 標題</h2>
+			<h2 id="title" class="text-center font-weight-bold title-cor">Yahoo 標題</h2>
 			<div id="accordion">   
 			    <ul class="nav nav-tabs">
 					<?php
 						for($k=0;$k<$category_count;$k++){
 					?>
-							<li class="nav-item"><span id="nav-<?= $k?>" class="nav-link text-dark today-tab" data-toggle="tab" href="#tab-<?= $k?>" role="tab"><?= $category_title[$k]?></span></li>
+							<li class="nav-item"><span id="nav-<?= $k?>" class="nav-link text-dark today-tab" data-toggle="tab" href="#tab-<?= $k?>"><?= $category_title[$k]?></span></li>
 					<?php
 						}
 					?>
@@ -267,14 +277,7 @@
   </body>
   <script>
 	$(document).ready(function() {
-	  	$('.nav-link').on('click', function() {
-			if (!$('#collapse_title').hasClass('show')) {
-				$('#collapse_title').collapse('toggle')
-			}
-		
-		});
-	
-		$("#nav-0").addClass("active show Selected");
+		$("#nav-0").addClass("active");
 		$("#tab-0").addClass("active");
 	});
   </script>
