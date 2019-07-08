@@ -12,7 +12,6 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-    <script src="//cdn.rawgit.com/tonystar/bootstrap-hover-tabs/v3.1.1/bootstrap-hover-tabs.js"></script>
 	<title>Yahoo標題</title>
   </head>
   <?php include("crawler.php");?>
@@ -28,6 +27,7 @@
 	.jumbotron{
 	  height:100%;
 	  width:100%;
+	  overflow-y: auto;
 	}
 	
 	.container{
@@ -131,7 +131,6 @@
 	.title-img{
 		z-index: 1;
 		position: absolute;
-		width: 350px;
 		height: 210px;
 		top: 14px;
 		left: 12px;
@@ -200,6 +199,7 @@
 	}
 	
 	.MainStoryImage{
+		width: 350px;
 		background-size: cover;
 	}
 </style>
@@ -280,5 +280,10 @@
 		$("#nav-0").addClass("active");
 		$("#tab-0").addClass("active");
 	});
+	
+	//標籤有[data-toggle="tab"]屬性，有滑鼠滑入時顯示tab區塊
+	$(document).on('mouseenter', '[data-toggle="tab"]', function () {
+      $(this).tab('show');
+    });
   </script>
 </html>
