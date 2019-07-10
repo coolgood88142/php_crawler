@@ -27,7 +27,7 @@
 	.jumbotron{
 	  height:100%;
 	  width:100%;
-	  overflow-y: auto;
+	  overflow-x: scroll;
 	}
 	
 	.container{
@@ -116,6 +116,10 @@
 	.nav-tabs .nav-link.active{
 		border-top-width: 3px;
 		border-top-color: #286DA8;
+	}
+
+	.nav-tabs,#collapse_title{
+		width: 633px;
 	}
 	
 	.tab-pane.active{
