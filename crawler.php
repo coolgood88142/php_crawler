@@ -22,9 +22,8 @@
     $title = "";
 	
 	//搜尋html內容裡的a標籤下一層的span標籤的文字與p標籤下一層的span標籤的文字
-	preg_match_all('/(<a [^>]*><span class="Va-tt">[\s\S]*?<\/span\s*><\/a>)\s+<p class="[\s\S]*?"><span class="Va-tt">([\s\S]*?)<\/span\s*><\/p>\s+<\/span\s*>/si',$html,$title);
-	
-	
+	preg_match_all('/(<a [^>]*><span class="Va-tt">([\s\S]*?)<\/span\s*><\/a>)\s+<p class="[\s\S]*?"><span class="Va-tt">([\s\S]*?)<\/span\s*><\/p>\s+<\/span\s*>/si',$html,$title);
+
 	$category = "";
 	//搜尋html內容裡的a標籤的標題
 	preg_match_all('/<i class="[\s\S]*? D-ib W-100">([\s\S]*?)<\/i\s*>/si',$html,$category);

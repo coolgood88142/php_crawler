@@ -209,7 +209,8 @@
 </style>
   <?php 
 	$yahoo_link = $title[1];
-	$yahoo_subtitle = $title[2];
+	$yahoo_title = $title[2];
+	$yahoo_subtitle = $title[3];
 	
 	$yahoo_img = $img[0];
 	$yahoo_alt = $img[1];
@@ -217,7 +218,8 @@
     
 	$category_title = $category[1];
 	$category_count = count($category_title);
-    
+
+	include("add_data.php");
   ?>
   <body>
     <div class="jumbotron vertical-center bg-white">
