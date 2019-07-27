@@ -219,6 +219,8 @@
 	$category_title = $category[1];
 	$category_count = count($category_title);
 
+	$title_count = count($yahoo_title);
+
 	include("add_data.php");
   ?>
   <body>
