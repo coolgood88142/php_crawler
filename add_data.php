@@ -65,28 +65,12 @@
                 }
             }
         }
-
     }
 
-    
+    if($data!=""){
+        $sql = "INSERT INTO title (ti_category, ti_date, ti_name, ti_text)
+            VALUES ". substr($data, 0, -1);
 
-    // $name = substr($name, 0, -1);
-    // $sql = "SELECT ti_id FROM title WHERE ti_name NOT IN ($name)";
-    // $query = $conn->query($sql);
-    // $ti_id = $query->fetch(PDO::FETCH_ASSOC);
-    // $count=count($ti_id);
-
-    // if($count>0){
-    //     for($i=0 ; $i<$count ; $i++){
-    //         $id = $ti_id[$i];
-    //     }
-    // }
-    
-    
-    $sql = "INSERT INTO title (ti_category, ti_date, ti_name, ti_text)
-            VALUES ";
-
-    $sql = $sql . substr($data, 0, -1);
-
-    $conn->exec($sql);
+        $conn->exec($sql);
+    }
 ?>
