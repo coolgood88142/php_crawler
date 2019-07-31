@@ -6,7 +6,7 @@
 
     if($title_count>0){
         //先查詢今天爬蟲資料
-        $name_sql = "SELECT ti_name, ti_category FROM title WHERE ti_date IN ('$ti_date')";
+        $name_sql = "SELECT name, category FROM title WHERE ti_date IN ('$ti_date')";
         $query = $conn->query($name_sql);
         $name_data = $query->fetchAll(PDO::FETCH_ASSOC);
         $ti_count = count($name_data);
@@ -68,7 +68,7 @@
     }
 
     if($data!=""){
-        $sql = "INSERT INTO title (ti_category, ti_date, ti_name, ti_text)
+        $sql = "INSERT INTO title (category, date, name, text)
             VALUES ". substr($data, 0, -1);
 
         $conn->exec($sql);
