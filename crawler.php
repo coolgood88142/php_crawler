@@ -29,10 +29,6 @@
 	preg_match_all('/<i class="[\s\S]*? D-ib W-100">([\s\S]*?)<\/i\s*>/si',$html,$category);
 	
 	$img = "";
-	//搜尋html內容裡的a標籤的標題
-	preg_match_all('/<img class="MainStoryImage Pos-r Bd-0 Mend-12[\s\S]*? alt="([\s\S]*?)"[\s\S]*?>/si',$html,$img);
-	
-	$img_link ="";
-	preg_match_all('/<div class="Bgc-w D-ib Zoom-1 Pos-a Start-0 T-0 Ov-h[\s\S]*?>\s+<div>\s+<a href="([\s\S]*?)"/si',$html,$img_link);
+	preg_match_all('/<div class="W-100 H-100 Ov-h "[\s\S]*?<img [\s\S]*?src="([\s\S]*?)"[\s\S]*?alt="([\s\S]*?)">[\s\S]*?<a href="([\s\S]*?)"/si',$html,$img);
 	
 ?>

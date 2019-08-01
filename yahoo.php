@@ -212,10 +212,12 @@
 	$yahoo_title = $title[2];
 	$yahoo_subtitle = $title[3];
 	
-	$yahoo_img = $img[0];
-	$yahoo_alt = $img[1];
-	$yahoo_img_link = $img_link[1];
-    
+	$yahoo_img = $img[1];
+	$yahoo_alt = $img[2];
+	$yahoo_img_link = $img[3];
+	var_dump($yahoo_img);
+	exit;
+
 	$category_title = $category[1];
 	$category_count = count($category_title);
 
@@ -242,34 +244,26 @@
 			          	<div class="tab-content">
 			          	<?php
 			          		for($i=0;$i<$category_count;$i++){
+								  $m = $i * 3;
 			          	?>
 			            		<div class="tab-pane" id="tab-<?= $i?>">
 									<ul>
-										<li class="title-img" >
-											
-												<a href="<?= $yahoo_img_link[$i];?>" class="img-link">
-													<?= $yahoo_img[$i];?>
+									<?php
+										for($k=0;$k<3;$k++){
+											$n = $m + $k;
+									?>
+											<li class="title-img<?= $k?>">
+												<a href="<?= $yahoo_img_link[$n];?>" class="img-link">
+													<img src="<?= $yahoo_img[$n];?>">
 												</a>
-												<a href="<?= $yahoo_img_link[$i];?>" class="img-alt">
-													<p class="img-text"><?= $yahoo_alt[$i];?></p>
+												<a href="<?= $yahoo_img_link[$n];?>" class="img-alt">
+													<p class="img-text"><?= $yahoo_alt[$n];?></p>
 												</a>
-											
-										</li>
-										
-			            <?php  
-			            		$a = $i * 4;
-			            		$b = $a + 4;
-			            		for($j=$a;$j<$b;$j++){
-			            ?>
-										<li class="tab-data">
-											<div class="tab-text">
-												<?= $yahoo_link[$j]; ?>
-												<p class="card-text tx-carbon"><?= $yahoo_subtitle[$j]; ?></p>
-											</div>
-										</li>
-						<?php
-								}
-						?>				
+											</li>
+									<?php
+										}
+									?>		
+			            
 									</ul>
 								</div>
 						<?php		
