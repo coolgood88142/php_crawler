@@ -16,8 +16,24 @@
         $max = $query->fetch(PDO::FETCH_ASSOC);
         $category_max = $max['id_count'];
 
+        $category_sql = "SELECT name FROM categorys WHERE status = 'Y'";
+        $query = $conn->query($category_sql);
+        $categorys = $query->fetchAll(PDO::FETCH_ASSOC);
+
         //有資料時做比對
         if($ti_count>0){
+            $k=0;$category_max;
+            foreach ($categorys as $key => $value) {
+                $name = $value['name'];
+                $category_max = $category_max+1;
+                if ($category_title[$k]!=$name) {
+                    $sql = "INSERT INTO categorys (id, name, status) VALUES ($category_max, '$name', 'Y')";
+                    $conn->exec($sql);
+                }
+                $k++;
+            }
+
+            
 
             //查詢到的資料先組陣列
             $name_array = array();
@@ -39,8 +55,8 @@
                         $ti_category = $now+1;
                         
                         //ceil:無條件進位
-                        if($ti_category>$category_max){
-                            $ti_category = (ceil($ti_category / $category_max)) - 1;
+                        if($ti_category>$category_count){
+                            $ti_category = (ceil($ti_category / $category_count)) - 1;
                         }
 
                         $ti_name = $yahoo_title[$now];

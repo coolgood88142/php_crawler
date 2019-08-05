@@ -210,7 +210,10 @@
   <?php 
 	$yahoo_link = $title[1];
 	$yahoo_title = $title[2];
-	$yahoo_subtitle = $title[3];
+	$yahoo_subtitle = $sub_title[1];
+
+	$other_array = array_merge($first_text[1],$other_text[1]);
+
 	
 	$yahoo_img = $img[1];
 	$yahoo_alt = $img[2];
