@@ -22,13 +22,18 @@
     $title = "";
 	
 	//搜尋html內容裡的a標籤下一層的span標籤的文字與p標籤下一層的span標籤的文字
-	preg_match_all('/(<a [^>]*><span class="Va-tt">([\s\S]*?)<\/span><\/a>)/si',$html,$title);
+	preg_match_all('/(<a [^>]*><span class="Va-tt"[^>]*>([\s\S]*?)<\/span><\/a>)/si',$html,$title);
 
 	preg_match_all('/<p [^>]*><span class="Va-tt"[^>]*>([\s\S]*?)<\/span>/si',$html,$sub_title);
 
+	//類別中最後的文字，first_text+other_text
 	preg_match_all('/<div class="My-0 Pos-r"[\s\S]*?<b [^>]*>([\s\S]*?)<\/b>[\s\S]*?<span[\s\S]*?>([\s\S]*?)<\/span>/si',$html,$first_text);
+	preg_match_all('/<div class="My-0 Dimmed Pos-r"[\s\S]*?<span [^>]*>([\s\S]*?)<\/span>/si',$html,$other_text);
 
-	preg_match_all('/<div class="My-0 Dimmed Pos-r"[\s\S]*?<span [^>]*>([\s\S]*?)<\/span>\s+<a [^>]*>([\s\S]*?)<\/a>/si',$html,$other_text);
+	$last_text = array_merge($first_text[1], $other_text[1]);
+	// $sub_title = array_splice($sub_title[1],0,$last_text); 
+	var_dump($title[2]);
+	exit;
 
 	$category = "";
 	//搜尋html內容裡的a標籤的標題
