@@ -224,7 +224,7 @@
 
 	$title_count = count($yahoo_title);
 
-	include("add_data.php");
+	// include("add_data.php");
   ?>
   <body>
     <div class="jumbotron vertical-center bg-white">
@@ -251,7 +251,7 @@
 											<li class="title-img" >
 												
 													<a href="<?= $yahoo_img_link[$i];?>" class="img-link">
-														<?= $yahoo_img[$i];?>
+														<img src="<?= $yahoo_img[$i];?>">
 													</a>
 													<a href="<?= $yahoo_img_link[$i];?>" class="img-alt">
 														<p class="img-text"><?= $yahoo_alt[$i];?></p>

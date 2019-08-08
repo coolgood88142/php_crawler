@@ -32,13 +32,25 @@
 
 	$last_text = array_merge($first_text[1], $other_text[1]);
 	// $sub_title = array_splice($sub_title[1],0,$last_text); 
-	var_dump($title[2]);
-	exit;
+	preg_match_all('/新楓之谷 幫你晉升有房一族"/si',$html,$test);
+
+	//使用$html將第6個標提資料看看是怎麼組的，重新整理會一直換，要在研究怎麼取
+	
 
 	$category = "";
 	//搜尋html內容裡的a標籤的標題
 	preg_match_all('/<i class="[\s\S]*? D-ib W-100">([\s\S]*?)<\/i\s*>/si',$html,$category);
 	
-	$img = "";
+	$img = "";$img2 = "";$img1 = "";
 	preg_match_all('/<div class="W-100 H-100 Ov-h "[\s\S]*?<img [\s\S]*?src="([\s\S]*?)"[\s\S]*?alt="([\s\S]*?)">[\s\S]*?<a href="([\s\S]*?)"/si',$html,$img);
+	
+	//圖片後15個，因為網頁跑完時預設第一個類別會帶圖片路徑，其他類別不會
+	//處理圖片的陣列資料與正規化
+	preg_match_all('/image:url\(\'([\s\S]*?)\'\)" alt/si',$html,$img1);
+	preg_match_all('/image:url\(\'[\s\S]*?\/(http[\s\S]*?)\'\)" alt/si',$html,$img2);
+	array_splice($img2[1],0,1,$img1[1][0]);
+	unset($img2[1][15]);
+	array_splice($img[1],3,15,$img2[1]); 
+	
+	
 ?>
