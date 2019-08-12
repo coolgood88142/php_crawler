@@ -26,17 +26,6 @@
 
 	preg_match_all('/<p [^>]*><span class="Va-tt"[^>]*>([\s\S]*?)<\/span>/si',$html,$sub_title);
 
-	//類別中最後的文字，first_text+other_text
-	preg_match_all('/<div class="My-0 Pos-r"[\s\S]*?<b [^>]*>([\s\S]*?)<\/b>[\s\S]*?<span[\s\S]*?>([\s\S]*?)<\/span>/si',$html,$first_text);
-	preg_match_all('/<div class="My-0 Dimmed Pos-r"[\s\S]*?<span [^>]*>([\s\S]*?)<\/span>/si',$html,$other_text);
-
-	$last_text = array_merge($first_text[1], $other_text[1]);
-	// $sub_title = array_splice($sub_title[1],0,$last_text); 
-	preg_match_all('/新楓之谷 幫你晉升有房一族"/si',$html,$test);
-
-	//使用$html將第6個標提資料看看是怎麼組的，重新整理會一直換，要在研究怎麼取
-	
-
 	$category = "";
 	//搜尋html內容裡的a標籤的標題
 	preg_match_all('/<i class="[\s\S]*? D-ib W-100">([\s\S]*?)<\/i\s*>/si',$html,$category);

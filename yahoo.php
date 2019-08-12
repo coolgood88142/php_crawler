@@ -140,6 +140,26 @@
 		left: 12px;
 		border: 1px solid rgb(226, 226, 228);
 		list-style:none;
+		width:342px;
+	}
+
+	.title-img-sub{
+		z-index: 1;
+		position: absolute;
+		height: 80px;
+		top: 14px;
+		left: 12px;
+		border: 1px solid rgb(226, 226, 228);
+		list-style:none;
+		width:171px;
+	}
+
+	.img-size{
+		width:342px;
+	}
+
+	.img-size-sub{
+		width:171px;
 	}
 	
 	.tab-data{
@@ -159,7 +179,16 @@
 	}
 	
 	.img-text{
-		font-size: 24px;
+		font-size: 22px;
+		color: #fff!important;
+		padding-right: 14px;
+		padding-left: 14px;
+		text-decoration: none;
+		letter-spacing: normal;
+	}
+
+	.img-text-sub{
+		font-size: 14px;
 		color: #fff!important;
 		padding-right: 14px;
 		padding-left: 14px;
@@ -212,9 +241,6 @@
 	$yahoo_title = $title[2];
 	$yahoo_subtitle = $sub_title[1];
 
-	$other_array = array_merge($first_text[1],$other_text[1]);
-
-	
 	$yahoo_img = $img[1];
 	$yahoo_alt = $img[2];
 	$yahoo_img_link = $img[3];
@@ -248,18 +274,28 @@
 							?>
 									<div class="tab-pane" id="tab-<?= $i?>">
 										<ul>
-											<li class="title-img" >
+											<?php
+												$n = $i * 3;
+												$m = $n + 3;
+												for($e=$n;$e<$m;$e++){
+													$sub = "";
+													if($e!=$n){
+														$sub = '-sub';
+													} 
+											?>
+											<li class="title-img<?= $sub?>">
 												
-													<a href="<?= $yahoo_img_link[$i];?>" class="img-link">
-														<img src="<?= $yahoo_img[$i];?>">
+													<a href="<?= $yahoo_img_link[$e];?>" class="img-link">
+														<img src="<?= $yahoo_img[$e];?>" class="img-size<?= $sub?>">
 													</a>
-													<a href="<?= $yahoo_img_link[$i];?>" class="img-alt">
-														<p class="img-text"><?= $yahoo_alt[$i];?></p>
+													<a href="<?= $yahoo_img_link[$e];?>" class="img-alt">
+														<p class="img-text<?= $sub?>"><?= $yahoo_alt[$e];?></p>
 													</a>
 												
 											</li>
-											
 							<?php  
+											}
+
 									$a = $i * 5;
 									$b = $a + 5;
 									for($j=$a;$j<$b;$j++){
