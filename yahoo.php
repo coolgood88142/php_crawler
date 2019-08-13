@@ -143,15 +143,28 @@
 		width:342px;
 	}
 
-	.title-img-sub{
+	.title-img-sub1{
 		z-index: 1;
 		position: absolute;
 		height: 80px;
-		top: 14px;
-		left: 12px;
 		border: 1px solid rgb(226, 226, 228);
 		list-style:none;
 		width:171px;
+		float: right;
+		left: 12px;
+		top: 230px;
+	}
+
+	.title-img-sub2{
+		z-index: 1;
+		position: absolute;
+		height: 80px;
+		border: 1px solid rgb(226, 226, 228);
+		list-style:none;
+		width:171px;
+		float: right;
+		right: 279px;
+		top: 230px;
 	}
 
 	.img-size{
@@ -185,6 +198,8 @@
 		padding-left: 14px;
 		text-decoration: none;
 		letter-spacing: normal;
+		text-shadow: 1px 1px rgba(0,0,0,.9);
+    	margin-top: 10px;
 	}
 
 	.img-text-sub{
@@ -194,6 +209,7 @@
 		padding-left: 14px;
 		text-decoration: none;
 		letter-spacing: normal;
+		text-shadow: 0 1px 1px #000;
 	}
 	
 	.tab-text{
@@ -239,7 +255,7 @@
   <?php 
 	$yahoo_link = $title[1];
 	$yahoo_title = $title[2];
-	$yahoo_subtitle = $sub_title[1];
+	$yahoo_subtitle = $title[3];
 
 	$yahoo_img = $img[1];
 	$yahoo_alt = $img[2];
@@ -277,24 +293,28 @@
 											<?php
 												$n = $i * 3;
 												$m = $n + 3;
+												$sub_count = 0;
 												for($e=$n;$e<$m;$e++){
-													$sub = "";
+													$sub = "";$img_sub = "";$text_sub = "";
 													if($e!=$n){
 														$sub = '-sub';
+														$img_sub = $sub . $sub_count;
+														$text_sub = $sub;
 													} 
 											?>
-											<li class="title-img<?= $sub?>">
+											<li class="title-img<?= $img_sub?>">
 												
 													<a href="<?= $yahoo_img_link[$e];?>" class="img-link">
 														<img src="<?= $yahoo_img[$e];?>" class="img-size<?= $sub?>">
 													</a>
 													<a href="<?= $yahoo_img_link[$e];?>" class="img-alt">
-														<p class="img-text<?= $sub?>"><?= $yahoo_alt[$e];?></p>
+														<p class="img-text<?= $text_sub?>"><?= $yahoo_alt[$e];?></p>
 													</a>
 												
 											</li>
 							<?php  
-											}
+													$sub_count++;
+												}
 
 									$a = $i * 5;
 									$b = $a + 5;
