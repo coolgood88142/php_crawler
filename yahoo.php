@@ -266,7 +266,7 @@
 
 	$title_count = count($yahoo_title);
 
-	// include("add_data.php");
+	include("add_data.php");
   ?>
   <body>
     <div class="jumbotron vertical-center bg-white">
@@ -275,7 +275,7 @@
 			<div id="accordion">   
 			    <ul class="nav nav-tabs">
 					<?php
-						for($k=0;$k<$category_count;$k++){
+						for ($k = 0; $k < $category_count; $k++){
 					?>
 							<li class="nav-item"><span id="nav-<?= $k?>" class="nav-link text-dark today-tab" data-toggle="tab" href="#tab-<?= $k?>"><?= $category_title[$k]?></span></li>
 					<?php
@@ -286,7 +286,7 @@
 			        <div class="card-block">
 			          	<div class="tab-content">
 							<?php
-								for($i=0;$i<$category_count;$i++){
+								for ($i = 0; $i < $category_count; $i++){
 							?>
 									<div class="tab-pane" id="tab-<?= $i?>">
 										<ul>
@@ -294,9 +294,9 @@
 												$n = $i * 3;
 												$m = $n + 3;
 												$sub_count = 0;
-												for($e=$n;$e<$m;$e++){
+												for ($e = $n; $e < $m; $e++){
 													$sub = "";$img_sub = "";$text_sub = "";
-													if($e!=$n){
+													if ($e != $n) {
 														$sub = '-sub';
 														$img_sub = $sub . $sub_count;
 														$text_sub = $sub;
@@ -318,7 +318,7 @@
 
 									$a = $i * 5;
 									$b = $a + 5;
-									for($j=$a;$j<$b;$j++){
+									for ($j = $a; $j < $b; $j++) {
 							?>
 											<li class="tab-data">
 												<div class="tab-text">

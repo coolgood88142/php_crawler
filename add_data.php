@@ -6,11 +6,6 @@
 
     if($title_count>0){
         //先查詢今天爬蟲資料
-        $titles_sql = "SELECT name, category_id FROM titles WHERE date IN ('$ti_date')";
-        $query = $conn->query($titles_sql);
-        $name_data = $query->fetchAll(PDO::FETCH_ASSOC);
-        $ti_count = count($name_data);
-
         $category_sql = "SELECT count(id) as id_count FROM categorys";
         $query = $conn->query($category_sql);
         $max = $query->fetch(PDO::FETCH_ASSOC);
@@ -20,21 +15,24 @@
         $query = $conn->query($category_sql);
         $categorys = $query->fetchAll(PDO::FETCH_ASSOC);
 
+        $k=0;$category_max;
+        foreach ($categorys as $key => $value) {
+            $name = $value['name'];
+            $category_max = $category_max+1;
+            if ($category_title[$k]!=$name) {
+                $sql = "INSERT INTO categorys (id, name, status) VALUES ($category_max, '$name', 'Y')";
+                $conn->exec($sql);
+            }
+            $k++;
+        }
+
+        $titles_sql = "SELECT name, category_id FROM titles WHERE date IN ('$ti_date')";
+        $query = $conn->query($titles_sql);
+        $name_data = $query->fetchAll(PDO::FETCH_ASSOC);
+        $ti_count = count($name_data);
+
         //有資料時做比對
         if($ti_count>0){
-            $k=0;$category_max;
-            foreach ($categorys as $key => $value) {
-                $name = $value['name'];
-                $category_max = $category_max+1;
-                if ($category_title[$k]!=$name) {
-                    $sql = "INSERT INTO categorys (id, name, status) VALUES ($category_max, '$name', 'Y')";
-                    $conn->exec($sql);
-                }
-                $k++;
-            }
-
-            
-
             //查詢到的資料先組陣列
             $name_array = array();
             $category_array = array();
