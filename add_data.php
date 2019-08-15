@@ -81,6 +81,23 @@
         }
     }
 
+    $n = 0;$m = 0;
+    foreach ($yahoo_title as $value) {
+        if (mb_strlen( $value, "utf-8") > 17) {
+            $value = mb_substr($value,0,17,"utf-8") . '...';
+            $title[$n] = $value;
+        }
+        $n++;
+    }
+
+    foreach ($yahoo_subtitle as $value) {
+        if (mb_strlen( $value, "utf-8") > 36) {
+            $value = mb_substr($value,0,36,"utf-8") . '...';
+            $yahoo_subtitle[$m] = $value;
+        }
+        $m++;
+    }
+
     if($data!=""){
         $sql = "INSERT INTO titles (category_id, date, name, text)
             VALUES ". substr($data, 0, -1);
